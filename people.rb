@@ -10,28 +10,33 @@
 # Call the teach method on your instructor instance and call the learn method on your student. Next, call the teach method on your student instance. What happens? Why doesn't that work? Leave a comment in your program explaining why.
 # Once you're done, commit and push your work to GitHub!
 
-class Parent
-  	def initialize(name, creator)
-    	@name = name
-    	@creator = creator
-  end
+class Person
+
+	#read/write 
+	def initialize (name)
+        @name = name
+    end
+
+  	def greet ()
+  		puts "Hi, my name is #{@name}"
+  	end
 end
 
-class Student 
+class Student < Person
 	def learn ()
 		puts "I get it!"
 	end
 end
 
-class Instructor
+class Instructor < Person
 	def teach ()
 		puts "Everything in Ruby is an Object"
 	end
 end
 
-Chris = Instructor.new
+Chris = Instructor.new("Chris")
 Chris.greet
 
-Cristina = Student.new
-Christina.greet
+Cristina = Student.new("Christina")
+Cristina.greet
 
