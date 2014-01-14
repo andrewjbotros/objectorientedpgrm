@@ -36,7 +36,14 @@ end
 
 Chris = Instructor.new("Chris")
 Chris.greet
+Chris.teach
+puts ""
 
 Cristina = Student.new("Christina")
 Cristina.greet
+Cristina.learn
+puts ""
+
+#Cristina.teach
+#This method belongs to Instructor which has not been inherited by the Student class
 
