@@ -48,7 +48,8 @@ end
 #display output as required
 def input (basket)
 	basket.each do |key, value|
-    puts "#{value[2]} #{key} at #{value[1].round(2)}"
+    #puts "#{value[2]} #{key} at #{value[1].round(2)}"
+    puts "#{value[2]} #{key} at #{sprintf('%.2f', value[1])}"
 	end
 	puts ""
 end
@@ -59,7 +60,7 @@ def output (basket)
 	total = totalBill (basket)
 
 	basket.each do |key, value|
-    puts "#{value[2]} #{key} at #{value[1].round(2)}"
+    	puts "#{value[2]} #{key} at #{sprintf('%.2f', value[1])}"
 	end
 
 	salesTaxes = total - subTotal
