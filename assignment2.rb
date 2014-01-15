@@ -23,6 +23,15 @@ basket3["bottle of perfume"] = ["sales", 18.99, 1]
 basket3["packet of headache pills"] = ["exempt", 9.75, 1]
 basket3["imported box of chocolates"] = ["exempt import", 11.25, 1]
 
+#display input as per instructions
+def customRound (number)
+	if (number * 100) % 10 <= 5 && (number * 100) % 10 != 0
+		return (((number*100) - ((number * 100) % 10)).round + 5) / 100.00
+	else
+		return number
+	end
+end
+
 #this method applies tax
 def applyTax (basket)
 	basket.each do |key, value|
@@ -45,7 +54,6 @@ def totalBill (basket)
 	return sum
 end
 
-#display input as per instructions
 def input (basket)
 	basket.each do |key, value|
     puts "#{value[2]} #{key} at #{sprintf('%.2f', value[1])}"
@@ -58,12 +66,12 @@ def output (basket)
 	subTotal = totalBill (basket)
 	applyTax (basket)
 	total = totalBill (basket)
+	salesTaxes = total - subTotal
 
 	basket.each do |key, value|
     	puts "#{value[2]} #{key} at #{sprintf('%.2f', value[1])}"
 	end
-
-	salesTaxes = total - subTotal
+	
 	puts "Sales Taxes: #{sprintf('%.2f', salesTaxes)}"
 	puts "Total: #{sprintf('%.2f',total)}"
 	puts ""
