@@ -23,13 +23,6 @@ basket3["bottle of perfume"] = ["sales", 18.99, 1]
 basket3["packet of headache pills"] = ["exempt", 9.75, 1]
 basket3["box of imported chocolates"] = ["import", 11.25, 1]
 
-#display output as required
-def display (basket)
-	basket.each do |key, value|
-    puts "#{value[2]} #{key} at #{value[1]}"
-	end
-end
-
 #these methods display item characteristic (tax status, price, number)
 def displayTaxStatus (basket)
 	basket.each do |key, value|
@@ -67,18 +60,32 @@ def applyTax (basket)
 			value[1] = value[1]*1.10*1.05
 		end
 	end
+end
 
-	totalBill = totalBill(basket)
-	puts totalBill
+#display output as required
+def display (basket)
+	basket.each do |key, value|
+    puts "#{value[2]} #{key} at #{value[1]}"
+	end
+
+	subTotal = totalBill (basket)
+	puts "Subtotal: #{subTotal}"
+
+	applyTax (basket)
+	puts basket
+	# total = totalBill (basket) - subTotal
+	# puts "Sales Taxes: #{total}"
 end
 
 #we need to create another "taxed" basket
+display (basket1)
 basket1Tax = basket1
 basket2Tax = basket2
 basket3Tax = basket3
-
-display (basket1Tax)
+display(basket1)
 applyTax (basket1Tax)
-display (basket1Tax)
+applyTax (basket2Tax)
+applyTax (basket3Tax)
 
+display (basket1)
 
