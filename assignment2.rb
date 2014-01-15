@@ -12,32 +12,43 @@ basket1 = {}
 basket2 = {}
 basket3 = {}
 
+#populate those baskets with the goodies
 basket1["book"] = ["exempt", 12.49, 1]
 basket1["music CD"] = ["sales", 14.99, 1]
 basket1["chocolate bar"] = ["exempt", 0.85, 1]
-
 basket2["imported box of chocolates"] = ["import", 10.00, 1]
 basket2["imported bottle of perfume"] = ["import", 47.50, 1]
-
 basket3["imported bottle of perfume"] = ["import", 27.99, 1]
 basket3["bottle of perfume"] = ["sales", 18.99, 1]
 basket3["packet of headache pills"] = ["exempt", 9.75, 1]
 basket3["box of imported chocolates"] = ["import", 11.25, 1]
 
+#display output as required
 def display (basket)
 	basket.each do |key, value|
-    puts "#{key}: #{value}"
+    puts "#{value[2]} #{key} at #{value[1]}"
 	end
 end
 
-def taxes (basket)
-	basket.each do |key,value|
+#these methods display item characteristic (tax status, price, number)
+def displayTaxStatus (basket)
+	basket.each do |key, value|
+    puts "#{key}: #{value[0]}"
+	end
+end
 
-students.each{ |key,value| students[key] = "#{(value*1.05).to_i}" }
-display (students)
+def displayPrice (basket)
+	basket.each do |key, value|
+    puts "#{key}: #{value[1]}"
+	end
+end
 
-basket1Tax = basket1
-display(basket1)
-display(basket2)
-display(basket1Tax)
+def displayItems (basket)
+	basket.each do |key, value|
+    puts "#{key}: #{value[2]}"
+	end
+end
+
+display (basket1)
+
 
