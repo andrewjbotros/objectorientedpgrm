@@ -7,21 +7,6 @@
 #The rounding rules for sales tax are that for a tax rate of n%, a shelf price of p contains (np/100 rounded up to the nearest 0.05) amount of sales tax.
 #Write an application that prints out the receipt details for these shopping baskets...
 
-#need a rounding method
-#found one: http://www.hans-eric.com/code-samples/ruby-floating-point-round-off/
-class Float
-  def round_to(x)
-    (self * 10**x).round.to_f / 10**x
-  end
-
-  def ceil_to(x)
-    (self * 10**x).ceil.to_f / 10**x
-  end
-
-  def floor_to(x)
-    (self * 10**x).floor.to_f / 10**x
-  end
-end
 #create 3 baskets of goodies
 basket1 = {}
 basket2 = {}
