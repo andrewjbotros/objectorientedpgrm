@@ -61,8 +61,14 @@ def applyTax (basket)
 end
 
 #display output as required
-def display (basket)
+def input (basket)
+	basket.each do |key, value|
+    puts "#{value[2]} #{key} at #{value[1].round(2)}"
+	end
+	puts ""
+end
 
+def output (basket)
 	subTotal = totalBill (basket)
 	applyTax (basket)
 	total = totalBill (basket)
@@ -75,35 +81,41 @@ def display (basket)
 	puts "Sales Taxes: #{salesTaxes.round(2)}"
 	puts "Total: #{total.round(2)}"
 	puts ""
-	#puts basket
-	# total = totalBill (basket) - subTotal
-	# puts "Sales Taxes: #{total}"
 end
 
 #we need to create another "taxed" basket
+
+puts ("Input 1:")
+input (basket1)
+puts ("Input 2:")
+input (basket2)
+puts ("Input 3:")
+input (basket3)
+
 puts ("Output 1:")
-display (basket1)
+output (basket1)
 puts ("Output 2:")
-display (basket2)
+output (basket2)
 puts ("Output 3:")
-display (basket3)
+output (basket3)
 
-
-#these methods display item characteristic (tax status, price, number)
-# def displayTaxStatus (basket)
-# 	basket.each do |key, value|
-#     puts "#{key}: #{value[0]}"
-# 	end
-# end
-
-# def displayPrice (basket)
-# 	basket.each do |key, value|
-#     puts "#{key}: #{value[1]}"
-# 	end
-# end
-
-# def displayItems (basket)
-# 	basket.each do |key, value|
-#     puts "#{key}: #{value[2]}"
-# 	end
-# end
+# Output 1:
+# 1 book : 12.49
+# 1 music CD: 16.49
+# 1 chocolate bar: 0.85
+# Sales Taxes: 1.50
+# Total: 29.83
+ 
+# Output 2:
+# 1 imported box of chocolates: 10.50
+# 1 imported bottle of perfume: 54.65
+# Sales Taxes: 7.65
+# Total: 65.15
+ 
+# Output 3:
+# 1 imported bottle of perfume: 32.19
+# 1 bottle of perfume: 20.89
+# 1 packet of headache pills: 9.75
+# 1 imported box of chocolates: 11.85
+# Sales Taxes: 6.70
+# Total: 74.68
