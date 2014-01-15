@@ -12,24 +12,17 @@ basket1 = {}
 basket2 = {}
 basket3 = {}
 
-basket1["book"] = ["exempt", 12.49]
-basket1["music CD"] = ["sales", 14.99]
-basket1["chocolate bar"] = ["exempt", 0.85]
-items["imported box of chocolates"] = ["import", 10.00]
-items["imported bottle of perfume"] = ["import", 47.50]
-items["perfume2"] = ["import", 27.99]
-items["perfume3"] = ["sales", 18.99]
-items["headachePills"] = ["exempt", 9.75]
-items["chocolates2"] = ["import", 11.25]
+basket1["book"] = ["exempt", 12.49, 1]
+basket1["music CD"] = ["sales", 14.99, 1]
+basket1["chocolate bar"] = ["exempt", 0.85, 1]
 
-#assign 3 baskets with goods
-basket1 = [items[:book], items[:musicCD], items[:chocolateBar]]
-basket2 = [items[:chocolates], items[:perfume]]
-basket3 = [items[:perfume2], items[:perfume3], items[:headachePills], items[:chocolates2]]
-#check to see what happens
-# puts basket1
-# puts basket2
-# puts basket3
+basket2["imported box of chocolates"] = ["import", 10.00, 1]
+basket2["imported bottle of perfume"] = ["import", 47.50, 1]
+
+basket3["imported bottle of perfume"] = ["import", 27.99, 1]
+basket3["bottle of perfume"] = ["sales", 18.99, 1]
+basket3["packet of headache pills"] = ["exempt", 9.75, 1]
+basket3["box of imported chocolates"] = ["import", 11.25, 1]
 
 def display (basket)
 	basket.each do |key, value|
@@ -37,6 +30,14 @@ def display (basket)
 	end
 end
 
+def taxes (basket)
+	basket.each do |key,value|
+
+students.each{ |key,value| students[key] = "#{(value*1.05).to_i}" }
+display (students)
+
+basket1Tax = basket1
 display(basket1)
-#puts items[:book]
+display(basket2)
+display(basket1Tax)
 
