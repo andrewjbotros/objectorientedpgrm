@@ -49,6 +49,36 @@ def displayItems (basket)
 	end
 end
 
-display (basket1)
+#this method returns the total bill
+def totalBill (basket)
+	sum = 0
+	basket.each do |key, value|
+    sum += value[1]*value[2]
+	end
+	return sum
+end
+
+#this method applies tax
+def applyTax (basket)
+	basket.each do |key, value|
+		if value[0] == "sales"
+			value[1] = value[1]*1.10
+		elsif value[0] == "import"
+			value[1] = value[1]*1.10*1.05
+		end
+	end
+
+	totalBill = totalBill(basket)
+	puts totalBill
+end
+
+#we need to create another "taxed" basket
+basket1Tax = basket1
+basket2Tax = basket2
+basket3Tax = basket3
+
+display (basket1Tax)
+applyTax (basket1Tax)
+display (basket1Tax)
 
 
