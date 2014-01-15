@@ -12,7 +12,7 @@ basket1 = {}
 basket2 = {}
 basket3 = {}
 
-#populate those baskets with the goodies
+#populate those baskets with the proper goodies
 basket1["book"] = ["exempt", 12.49, 1]
 basket1["music CD"] = ["sales", 14.99, 1]
 basket1["chocolate bar"] = ["exempt", 0.85, 1]
@@ -22,15 +22,6 @@ basket3["imported bottle of perfume"] = ["import", 27.99, 1]
 basket3["bottle of perfume"] = ["sales", 18.99, 1]
 basket3["packet of headache pills"] = ["exempt", 9.75, 1]
 basket3["imported box of chocolates"] = ["exempt import", 11.25, 1]
-
-#this method returns the total bill
-def totalBill (basket)
-	sum = 0
-	basket.each do |key, value|
-    sum += value[1]*value[2]
-	end
-	return sum
-end
 
 #this method applies tax
 def applyTax (basket)
@@ -45,15 +36,24 @@ def applyTax (basket)
 	end
 end
 
-#display output as required
+#this method returns the total bill
+def totalBill (basket)
+	sum = 0
+	basket.each do |key, value|
+    sum += value[1]*value[2]
+	end
+	return sum
+end
+
+#display input as per instructions
 def input (basket)
 	basket.each do |key, value|
-    #puts "#{value[2]} #{key} at #{value[1].round(2)}"
     puts "#{value[2]} #{key} at #{sprintf('%.2f', value[1])}"
 	end
 	puts ""
 end
 
+#display output as per instructions
 def output (basket)
 	subTotal = totalBill (basket)
 	applyTax (basket)
@@ -64,8 +64,8 @@ def output (basket)
 	end
 
 	salesTaxes = total - subTotal
-	puts "Sales Taxes: #{salesTaxes.round(2)}"
-	puts "Total: #{total.round(2)}"
+	puts "Sales Taxes: #{sprintf('%.2f', salesTaxes)}"
+	puts "Total: #{sprintf('%.2f',total)}"
 	puts ""
 end
 
@@ -84,6 +84,21 @@ puts ("Output 2:")
 output (basket2)
 puts ("Output 3:")
 output (basket3)
+
+# Input 1:
+# 1 book at 12.49
+# 1 music CD at 14.99
+# 1 chocolate bar at 0.85
+
+# Input 2:
+# 1 imported box of chocolates at 10.00
+# 1 imported bottle of perfume at 47.50
+
+# Input 3:
+# 1 imported bottle of perfume at 27.99
+# 1 bottle of perfume at 18.99
+# 1 packet of headache pills at 9.75
+# 1 imported box of chocolates at 11.25
 
 # Output 1:
 # 1 book : 12.49
