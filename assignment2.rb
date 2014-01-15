@@ -7,6 +7,21 @@
 #The rounding rules for sales tax are that for a tax rate of n%, a shelf price of p contains (np/100 rounded up to the nearest 0.05) amount of sales tax.
 #Write an application that prints out the receipt details for these shopping baskets...
 
+#need a rounding method
+#found one: http://www.hans-eric.com/code-samples/ruby-floating-point-round-off/
+class Float
+  def round_to(x)
+    (self * 10**x).round.to_f / 10**x
+  end
+
+  def ceil_to(x)
+    (self * 10**x).ceil.to_f / 10**x
+  end
+
+  def floor_to(x)
+    (self * 10**x).floor.to_f / 10**x
+  end
+end
 #create 3 baskets of goodies
 basket1 = {}
 basket2 = {}
@@ -22,25 +37,6 @@ basket3["imported bottle of perfume"] = ["import", 27.99, 1]
 basket3["bottle of perfume"] = ["sales", 18.99, 1]
 basket3["packet of headache pills"] = ["exempt", 9.75, 1]
 basket3["imported box of chocolates"] = ["exempt import", 11.25, 1]
-
-#these methods display item characteristic (tax status, price, number)
-def displayTaxStatus (basket)
-	basket.each do |key, value|
-    puts "#{key}: #{value[0]}"
-	end
-end
-
-def displayPrice (basket)
-	basket.each do |key, value|
-    puts "#{key}: #{value[1]}"
-	end
-end
-
-def displayItems (basket)
-	basket.each do |key, value|
-    puts "#{key}: #{value[2]}"
-	end
-end
 
 #this method returns the total bill
 def totalBill (basket)
@@ -72,12 +68,13 @@ def display (basket)
 	total = totalBill (basket)
 
 	basket.each do |key, value|
-    puts "#{value[2]} #{key} at #{value[1]}"
+    puts "#{value[2]} #{key} at #{value[1].round(2)}"
 	end
 
-
-	puts "Sales Taxes: #{total - subTotal}"
-	puts "Total: #{total}"
+	salesTaxes = total - subTotal
+	puts "Sales Taxes: #{salesTaxes.round(2)}"
+	puts "Total: #{total.round(2)}"
+	puts ""
 	#puts basket
 	# total = totalBill (basket) - subTotal
 	# puts "Sales Taxes: #{total}"
@@ -90,3 +87,23 @@ puts ("Output 2:")
 display (basket2)
 puts ("Output 3:")
 display (basket3)
+
+
+#these methods display item characteristic (tax status, price, number)
+# def displayTaxStatus (basket)
+# 	basket.each do |key, value|
+#     puts "#{key}: #{value[0]}"
+# 	end
+# end
+
+# def displayPrice (basket)
+# 	basket.each do |key, value|
+#     puts "#{key}: #{value[1]}"
+# 	end
+# end
+
+# def displayItems (basket)
+# 	basket.each do |key, value|
+#     puts "#{key}: #{value[2]}"
+# 	end
+# end
